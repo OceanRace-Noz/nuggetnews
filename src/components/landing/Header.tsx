@@ -15,26 +15,6 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
         alt="Nugget logo" 
         className="w-[150px] h-[41px] object-contain" 
       />
-      <nav className="flex gap-[50px] max-md:gap-[30px] max-sm:hidden">
-        <a
-          href="#"
-          className="text-[rgba(169,169,169,1)] text-xl font-light tracking-[0.4px] hover:text-white transition-colors"
-        >
-          Home
-        </a>
-        <a
-          href="#"
-          className="text-[rgba(169,169,169,1)] text-xl font-light tracking-[0.4px] hover:text-white transition-colors"
-        >
-          Funktionen
-        </a>
-        <a
-          href="#"
-          className="text-[rgba(169,169,169,1)] text-xl font-light tracking-[0.4px] hover:text-white transition-colors"
-        >
-          Preise
-        </a>
-      </nav>
     </header>
   );
 };
