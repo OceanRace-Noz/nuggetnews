@@ -45,7 +45,7 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({
         value={email}
         onChange={handleEmailChange}
         placeholder="Gib deine E-Mail ein"
-        className={`bg-transparent text-[rgba(169,169,169,1)] text-xl font-normal outline-none flex-1 min-w-0 ${!isValid ? "border-b border-red-500" : ""}`}
+        className={`bg-transparent text-[rgba(169,169,169,1)] text-xl font-fredoka font-normal outline-none flex-1 min-w-0 ${!isValid ? "border-b border-red-500" : ""}`}
         aria-label="Email input"
       />
       <button
@@ -53,7 +53,7 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({
         aria-label="Submit email"
         className="flex items-center cursor-pointer bg-[#09202F] hover:bg-[#0c2e43] transition-colors px-5 py-[15px] rounded-[50px]"
       >
-        <span className="text-[rgba(242,239,239,1)] text-xl font-medium mr-2">
+        <span className="text-[rgba(242,239,239,1)] text-xl font-fredoka font-medium mr-2">
           Los geht's!
         </span>
         <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
