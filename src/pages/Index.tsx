@@ -1,14 +1,42 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React from "react";
+import { Header } from "@/components/landing/Header";
+import { Hero } from "@/components/landing/Hero";
+import { EmailSignupForm } from "@/components/landing/EmailSignupForm";
+import { FeatureList } from "@/components/landing/FeatureList";
 
-const Index = () => {
+const features = [
+  {
+    icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/e95bb7b780e81ba3af2654640ef8af854a3d56d2?placeholderIfAbsent=true",
+    title: "Keine Werbung.",
+  },
+  {
+    icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/08915bbf9581738952f0ea89d20423d0911e5d6d?placeholderIfAbsent=true",
+    title: "Kein Clickbait.",
+  },
+  {
+    icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/c084db25bae95b8f2243947bf4c10d65ce6df73d?placeholderIfAbsent=true",
+    title: "Nur das, was zählt.",
+  },
+];
+
+export default function Index() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
-    </div>
-  );
-};
+    <>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500&family=Unbounded:wght@300;400&display=swap"
+        rel="stylesheet"
+      />
+      <main className="max-w-none w-full h-screen flex flex-col items-center justify-center mx-auto max-md:max-w-[991px] max-sm:max-w-screen-sm bg-black">
+        <Header />
 
-export default Index;
+        <div className="flex flex-col items-center gap-10 mt-[50px] max-md:gap-[30px] max-sm:gap-5">
+          <Hero />
+
+          <EmailSignupForm />
+
+          <FeatureList features={features} className="mt-[30px]" />
+        </div>
+      </main>
+    </>
+  );
+}
