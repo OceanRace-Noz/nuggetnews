@@ -1,5 +1,7 @@
 
 import React, { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 interface EmailSignupFormProps {
   className?: string;
@@ -10,13 +12,15 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({
 }) => {
   const [email, setEmail] = useState("");
   const [isValid, setIsValid] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
     setIsValid(true);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Basic email validation
@@ -26,12 +30,31 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({
       return;
     }
 
-    // Here you would typically send the email to your backend
-    console.log("Submitting email:", email);
+    setIsSubmitting(true);
+    
+    try {
+      const { error } = await supabase
+        .from('nugget-wartelist-emails')
+        .insert([{ email }]);
 
-    // Reset form after successful submission
-    setEmail("");
-    alert("Danke für deine Anmeldung! Wir melden uns bald bei dir.");
+      if (error) throw error;
+
+      toast({
+        title: "Erfolgreich angemeldet!",
+        description: "Wir melden uns bald bei dir.",
+      });
+      
+      setEmail("");
+    } catch (error) {
+      console.error('Error saving email:', error);
+      toast({
+        variant: "destructive",
+        title: "Fehler",
+        description: "Entschuldigung, etwas ist schief gelaufen. Bitte versuche es später erneut.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -47,11 +70,13 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({
         placeholder="Gib deine E-Mail ein"
         className={`bg-transparent text-[rgba(169,169,169,1)] text-xl font-fredoka font-normal outline-none flex-1 min-w-0 ${!isValid ? "border-b border-red-500" : ""}`}
         aria-label="Email input"
+        disabled={isSubmitting}
       />
       <button
         type="submit"
         aria-label="Submit email"
-        className="flex items-center cursor-pointer bg-[#09202F] hover:bg-[#0c2e43] transition-colors px-5 py-[15px] rounded-[50px]"
+        className="flex items-center cursor-pointer bg-[#09202F] hover:bg-[#0c2e43] transition-colors px-5 py-[15px] rounded-[50px] disabled:opacity-50 disabled:cursor-not-allowed"
+        disabled={isSubmitting}
       >
         <span className="text-[rgba(242,239,239,1)] text-xl font-fredoka font-medium mr-2">
           Los geht's!
