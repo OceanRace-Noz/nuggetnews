@@ -22,3 +22,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment files
+.env
+
+# Next.js build output
+.next/
+
+# Supabase generated files
+.supabase/
