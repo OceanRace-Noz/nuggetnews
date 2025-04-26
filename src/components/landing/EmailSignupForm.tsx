@@ -33,11 +33,30 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({
     setIsSubmitting(true);
     
     try {
-      const { error } = await supabase
+      console.log("Attempting to save email:", email);
+      
+      // Check if the connection is working
+      const { data: connectionTest, error: connectionError } = await supabase.from('nugget-wartelist-emails').select('count').limit(1);
+      
+      if (connectionError) {
+        console.error("Connection test failed:", connectionError);
+        throw connectionError;
+      }
+      
+      console.log("Connection test successful:", connectionTest);
+      
+      // Try to insert the email
+      const { data, error } = await supabase
         .from('nugget-wartelist-emails')
-        .insert([{ email }]);
+        .insert([{ email }])
+        .select();
 
-      if (error) throw error;
+      if (error) {
+        console.error("Insertion error details:", error);
+        throw error;
+      }
+
+      console.log("Email saved successfully:", data);
 
       toast({
         title: "Erfolgreich angemeldet!",
