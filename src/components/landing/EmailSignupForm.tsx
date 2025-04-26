@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 
 interface EmailSignupFormProps {
@@ -53,18 +52,16 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({
         className="flex items-center cursor-pointer bg-[#09202F] px-[30px] py-[15px] rounded-[50px] hover:bg-[#0c2e43] transition-colors"
         aria-label="Submit email"
       >
-        <div className="flex items-center">
-          <span className="text-[rgba(242,239,239,1)] text-xl font-medium mr-2">
-            Los geht's!
-          </span>
-          <div>
-            <div
-              dangerouslySetInnerHTML={{
-                __html:
-                  '<svg id="I209:1515;209:1335" layer-name="arrow-right" width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="arrow-icon" style="width: 24px; height: 19px"> <path d="M13.3333 4.32043L20 9.8621M20 9.8621L13.3333 15.4038M20 9.8621L4 9.8621" stroke="#A9A9A9" stroke-linecap="round" stroke-linejoin="round"></path> </svg>',
-              }}
-            />
-          </div>
+        <span className="text-[rgba(242,239,239,1)] text-xl font-medium mr-2">
+          Los geht's!
+        </span>
+        <div>
+          <div
+            dangerouslySetInnerHTML={{
+              __html:
+                '<svg id="I209:1515;209:1335" layer-name="arrow-right" width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="arrow-icon" style="width: 24px; height: 19px"> <path d="M13.3333 4.32043L20 9.8621M20 9.8621L13.3333 15.4038M20 9.8621L4 9.8621" stroke="#A9A9A9" stroke-linecap="round" stroke-linejoin="round"></path> </svg>',
+            }}
+          />
         </div>
       </button>
       {!isValid && (
@@ -75,4 +72,3 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({
     </form>
   );
 };
-
