@@ -30,7 +30,7 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({
   };
   return <form onSubmit={handleSubmit} className={`flex items-center gap-2.5 border shadow-[0px_0px_12px_0px_rgba(234,174,51,0.55)] bg-[rgba(29,29,29,0.5)] px-5 py-[5px] rounded-[50px] border-solid border-[#C7881F] ${className}`} aria-label="Email signup form">
       <input type="text" value={email} onChange={handleEmailChange} placeholder="Gib deine E-Mail ein" className={`bg-transparent text-[rgba(169,169,169,1)] text-xl font-normal outline-none ${!isValid ? "border-b border-red-500" : ""}`} aria-label="Email input" />
-      <button type="submit" aria-label="Submit email" className="flex items-right cursor-pointer bg-[#09202F] px-[10px] py-[15px] rounded-[50px] hover:bg-[#0c2e43] transition-colors">
+      <button type="submit" aria-label="Submit email" className="flex items-right cursor-pointer bg-[#09202F] px-[30px] py-[15px] rounded-[50px] hover:bg-[#0c2e43] transition-colors">
         <div className="flex items-center">
           <span className="text-[rgba(242,239,239,1)] text-xl font-medium mr-2">
             Los geht's!
