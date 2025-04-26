@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 
 interface EmailSignupFormProps {
@@ -36,7 +37,7 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({
   return (
     <form
       onSubmit={handleSubmit}
-      className={`flex items-center gap-2.5 border shadow-[0px_0px_12px_0px_rgba(234,174,51,0.55)] bg-[rgba(29,29,29,0.5)] px-5 py-[5px] rounded-[50px] border-solid border-[#C7881F] ${className}`}
+      className={`flex items-center gap-2.5 border shadow-[0px_0px_12px_0px_rgba(234,174,51,0.55)] bg-[rgba(29,29,29,0.5)] px-5 py-[5px] rounded-[50px] border-solid border-[#C7881F] w-full max-w-[720px] ${className}`}
       aria-label="Email signup form"
     >
       <input
