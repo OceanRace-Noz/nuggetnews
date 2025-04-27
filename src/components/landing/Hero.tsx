@@ -58,7 +58,9 @@ export const Hero: React.FC<HeroProps> = ({
       </div>
 
       <h2 className="text-[rgba(228,228,228,1)] text-center font-medium leading-6 mt-6">
-        
+        <span className="text-base md:text-lg font-light w-full max-w-[600px] block mx-auto">
+          Trag dich jetzt ein und sei unter den Ersten, die Nugget ausprobieren.
+        </span>
       </h2>
     </section>;
 };
