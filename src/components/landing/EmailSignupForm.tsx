@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { supabase } from "@/integrations/supabase/client";
@@ -79,7 +80,7 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
     <div className="px-6 md:px-0 w-full">
       <form 
         onSubmit={handleSubmit} 
-        className={`flex flex-row items-center justify-between gap-4 border shadow-[0px_0px_12px_0px_rgba(234,174,51,0.55)] bg-[rgba(29,29,29,0.5)] p-2 rounded-[50px] border-solid border-[#C7881F] w-full max-w-[600px] mx-auto ${className}`}
+        className={`flex flex-row items-center justify-between gap-2 border shadow-[0px_0px_12px_0px_rgba(234,174,51,0.55)] bg-[rgba(29,29,29,0.5)] p-2 rounded-[50px] border-solid border-[#C7881F] w-full max-w-[600px] mx-auto ${className}`}
         aria-label="Email signup form"
       >
         <input
@@ -87,14 +88,14 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
           value={email}
           onChange={handleEmailChange}
           placeholder="Gib deine E-Mail ein"
-          className={`bg-transparent text-left text-sm text-[#A9A9A9] focus:text-[#F1F0FB] transition-colors font-fredoka font-normal outline-none flex-1 px-4 min-w-0 ${!isValid ? "border-b border-red-500" : ""}`}
+          className={`bg-transparent text-left text-sm text-[#A9A9A9] focus:text-[#F1F0FB] transition-colors font-fredoka font-normal outline-none flex-1 px-3 min-w-0 truncate ${!isValid ? "border-b border-red-500" : ""}`}
           aria-label="Email input"
           disabled={isSubmitting}
         />
         <button
           type="submit"
           aria-label="Submit email"
-          className={`flex items-center justify-center cursor-pointer bg-[#09202F] hover:bg-[#0c2e43] transition-colors px-5 py-2.5 rounded-[50px] whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed`}
+          className={`flex items-center justify-center cursor-pointer bg-[#09202F] hover:bg-[#0c2e43] transition-colors px-5 py-2.5 rounded-[50px] whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed shrink-0`}
           disabled={isSubmitting}
         >
           <span className="text-[#F1F0FB] text-base font-fredoka font-normal mr-2">
