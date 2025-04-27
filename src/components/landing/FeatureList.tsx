@@ -1,4 +1,3 @@
-
 import React from "react";
 
 interface Feature {
@@ -26,7 +25,7 @@ export const FeatureList: React.FC<FeatureListProps> = ({
               alt={`${feature.title} Icon`} 
               className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] rounded-[50px] border-[0.5px] border-solid border-[#F2EFEF]" 
             />
-            <h3 className="text-white text-center font-normal text-sm md:text-base">
+            <h3 className="text-white text-center font-fredoka font-normal text-sm md:text-base">
               {feature.title}
             </h3>
           </div>
@@ -41,7 +40,7 @@ export const FeatureList: React.FC<FeatureListProps> = ({
               alt={`${feature.title} Icon`} 
               className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] rounded-[50px] border-[0.5px] border-solid border-[#F2EFEF]" 
             />
-            <h3 className="text-white text-center font-normal text-sm md:text-base">
+            <h3 className="text-white text-center font-fredoka font-normal text-sm md:text-base">
               {feature.title}
             </h3>
           </div>
@@ -56,7 +55,7 @@ export const FeatureList: React.FC<FeatureListProps> = ({
               alt={`${feature.title} Icon`} 
               className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] rounded-[50px] border-[0.5px] border-solid border-[#F2EFEF]" 
             />
-            <h3 className="text-white text-center font-normal text-sm md:text-base">
+            <h3 className="text-white text-center font-fredoka font-normal text-sm md:text-base">
               {feature.title}
             </h3>
           </div>
@@ -65,4 +64,3 @@ export const FeatureList: React.FC<FeatureListProps> = ({
     </section>
   );
 };
-

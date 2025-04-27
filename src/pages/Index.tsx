@@ -24,7 +24,7 @@ export default function Index() {
   return (
     <>
       <link
-        href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500&family=Fredoka:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500&family=Fredoka:wght@300;400;500&display=swap"
         rel="stylesheet"
       />
       <main className="relative w-full min-h-[120vh] flex flex-col items-center justify-start mx-auto">
