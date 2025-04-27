@@ -24,9 +24,9 @@ export const FeatureList: React.FC<FeatureListProps> = ({
             <img 
               src={feature.icon} 
               alt={`${feature.title} Icon`} 
-              className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] rounded-[50px] border-[0.5px] border-solid border-[#F2EFEF]" 
+              className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] rounded-[50px] border-[0.5px] border-solid border-[#E7AB31]" 
             />
-            <h3 className="text-white text-center font-fredoka font-normal text-sm md:text-base">
+            <h3 className="text-white text-center font-fredoka font-light text-sm md:text-base">
               {feature.title}
             </h3>
           </div>
@@ -39,9 +39,9 @@ export const FeatureList: React.FC<FeatureListProps> = ({
             <img 
               src={feature.icon} 
               alt={`${feature.title} Icon`} 
-              className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] rounded-[50px] border-[0.5px] border-solid border-[#F2EFEF]" 
+              className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] rounded-[50px] border-[0.5px] border-solid border-[#E7AB31]" 
             />
-            <h3 className="text-white text-center font-fredoka font-normal text-sm md:text-base">
+            <h3 className="text-white text-center font-fredoka font-light text-sm md:text-base">
               {feature.title}
             </h3>
           </div>
@@ -54,9 +54,9 @@ export const FeatureList: React.FC<FeatureListProps> = ({
             <img 
               src={feature.icon} 
               alt={`${feature.title} Icon`} 
-              className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] rounded-[50px] border-[0.5px] border-solid border-[#F2EFEF]" 
+              className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] rounded-[50px] border-[0.5px] border-solid border-[#E7AB31]" 
             />
-            <h3 className="text-white text-center font-fredoka font-normal text-sm md:text-base">
+            <h3 className="text-white text-center font-fredoka font-light text-sm md:text-base">
               {feature.title}
             </h3>
           </div>
