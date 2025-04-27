@@ -1,3 +1,4 @@
+
 import React from "react";
 interface Feature {
   icon: string;
@@ -32,7 +33,7 @@ export const FeatureList: React.FC<FeatureListProps> = ({
       </div>
       {/* Desktop layout */}
       <div className="hidden md:flex md:justify-between md:w-full md:gap-5">
-        {features.map((feature, index) => <div key={index} className="flex flex-col items-center gap-2.5 md:w-full my-[50px]">
+        {features.map((feature, index) => <div key={index} className="flex flex-col items-center gap-2.5 md:w-full my-[16px]">
             <img src={feature.icon} alt={`${feature.title} Icon`} className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] rounded-[50px] border-[0.5px] border-solid border-[#F2EFEF]" />
             <h3 className="text-white text-center font-normal text-sm md:text-base">
               {feature.title}
