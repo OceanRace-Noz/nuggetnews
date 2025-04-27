@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -10,7 +9,7 @@ export const Hero: React.FC<HeroProps> = ({ className }) => {
   const isMobile = useIsMobile();
   
   return (
-    <section className={`flex flex-col items-center px-6 ${className}`}>
+    <section className={`flex flex-col items-center px-6 md:px-[120px] ${className}`}>
       <div>
         <div className="relative">
           <svg id="209:942" width="720" height="100" viewBox="0 0 720 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full max-w-[720px] h-auto">
