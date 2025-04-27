@@ -87,7 +87,7 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
           value={email}
           onChange={handleEmailChange}
           placeholder="Gib deine E-Mail ein"
-          className={`bg-transparent text-left text-sm text-[#A9A9A9] focus:text-[#F1F0FB] transition-colors font-fredoka font-normal outline-none flex-1 px-4 min-w-0 ${!isValid ? "border-b border-red-500" : ""}`}
+          className={`bg-transparent text-left text-sm text-[#A9A9A9] focus:text-[#F1F0FB] transition-colors font-fredoka font-normal outline-none flex-1 w-full min-w-0 px-4 ${!isValid ? "border-b border-red-500" : ""}`}
           aria-label="Email input"
           disabled={isSubmitting}
         />
