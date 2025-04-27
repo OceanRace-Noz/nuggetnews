@@ -43,7 +43,7 @@ export default function Index() {
           
           <section className="flex flex-col items-center gap-4 w-full">
             <h2 className="text-[#C8C8C9] text-center font-medium leading-6">
-              <span className="text-base md:text-lg font-fredoka w-full max-w-[600px] block mx-auto">
+              <span className="text-sm md:text-base font-fredoka w-full max-w-[600px] block mx-auto">
                 <span className="font-light">Trag dich jetzt ein und sei unter den Ersten, die </span> 
                 <span className="text-[#E7AB31]">Nugget</span>
                 <span className="font-light"> ausprobieren.</span>
