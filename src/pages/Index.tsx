@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Header } from "@/components/landing/Header";
 import { Hero } from "@/components/landing/Hero";
@@ -26,14 +27,16 @@ export default function Index() {
         href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500&family=Unbounded:wght@300;400&display=swap"
         rel="stylesheet"
       />
-      <main className="relative w-full min-h-screen flex flex-col items-center justify-center mx-auto">
+      <main className="relative max-w-none w-full h-screen flex flex-col items-center justify-center mx-auto max-md:max-w-[991px] max-sm:max-w-screen-sm">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,#E7AB31_0%,#1C1C1E_100%)] -z-10" />
         <Header />
 
-        <div className="flex flex-col items-center gap-6 sm:gap-10 mt-[30px] sm:mt-[50px] px-6 sm:px-0 w-full">
+        <div className="flex flex-col items-center gap-10 mt-[50px] max-md:gap-[30px] max-sm:gap-5">
           <Hero />
+
           <EmailSignupForm />
-          <FeatureList features={features} className="mt-[20px] sm:mt-[30px]" />
+
+          <FeatureList features={features} className="mt-[30px]" />
         </div>
       </main>
     </>
