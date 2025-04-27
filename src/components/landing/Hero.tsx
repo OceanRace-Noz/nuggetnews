@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -50,7 +51,7 @@ export const Hero: React.FC<HeroProps> = ({ className }) => {
         </div>
       </div>
 
-      <div className="flex flex-col items-center mt-10">
+      <div className="flex flex-col items-center mt-10 md:mt-[10px]">
         <h1 className="font-unbounded text-[36px] md:text-[48px] text-[#F2EFEF] text-center font-normal leading-[1.4] mb-4">
           Kompakte News für <br className="md:hidden" />
           <span className="md:block">deinen Alltag.</span>
