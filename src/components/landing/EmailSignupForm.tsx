@@ -79,7 +79,7 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
   return (
     <form 
       onSubmit={handleSubmit} 
-      className={`flex flex-col md:flex-row items-center gap-4 md:gap-2.5 border shadow-[0px_0px_12px_0px_rgba(234,174,51,0.55)] bg-[rgba(29,29,29,0.5)] px-6 md:px-5 py-3 md:py-[5px] rounded-[50px] border-solid border-[#C7881F] w-full ${className}`}
+      className={`flex flex-col md:flex-row items-center gap-4 md:gap-2.5 border shadow-[0px_0px_12px_0px_rgba(234,174,51,0.55)] bg-[rgba(29,29,29,0.5)] px-4 md:px-5 py-3 md:py-[5px] rounded-[50px] border-solid border-[#C7881F] w-full max-w-[90%] md:max-w-none ${className}`}
       aria-label="Email signup form"
     >
       <input
@@ -87,7 +87,7 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
         value={email}
         onChange={handleEmailChange}
         placeholder="Gib deine E-Mail ein"
-        className={`bg-transparent text-center md:text-center w-full px-4 text-[rgba(169,169,169,1)] text-base md:text-xl font-fredoka font-normal outline-none flex-1 min-w-0 ${!isValid ? "border-b border-red-500" : ""}`}
+        className={`bg-transparent text-center md:text-left text-[rgba(169,169,169,1)] text-base md:text-xl font-fredoka font-normal outline-none flex-1 min-w-0 w-full md:w-auto ${!isValid ? "border-b border-red-500" : ""}`}
         aria-label="Email input"
         disabled={isSubmitting}
       />
