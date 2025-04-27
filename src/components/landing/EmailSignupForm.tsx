@@ -36,7 +36,7 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({
       console.log("Attempting to save email:", email);
       
       // Check if the connection is working
-      const { data: connectionTest, error: connectionError } = await supabase.from('nugget-wartelist-emails').select('count').limit(1);
+      const { data: connectionTest, error: connectionError } = await supabase.from('nugget_wartelist_emails').select('count').limit(1);
       
       if (connectionError) {
         console.error("Connection test failed:", connectionError);
@@ -47,7 +47,7 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({
       
       // Try to insert the email
       const { data, error } = await supabase
-        .from('nugget-wartelist-emails')
+        .from('nugget_wartelist_emails')
         .insert([{ email }])
         .select();
 
