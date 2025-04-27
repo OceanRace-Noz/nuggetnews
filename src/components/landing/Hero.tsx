@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -57,7 +58,7 @@ export const Hero: React.FC<HeroProps> = ({ className }) => {
         </h1>
       </div>
 
-      <h2 className="text-[rgba(228,228,228,1)] text-center font-medium leading-6 mb-4 md:mt-[20px]">
+      <h2 className="text-[rgba(228,228,228,1)] text-center font-medium leading-6 mb-0 md:mb-2">
         <span className="text-base md:text-lg font-light max-w-[280px] md:max-w-none block mx-auto">
           Trag dich jetzt ein und sei unter den Ersten, die Nugget ausprobieren.
         </span>

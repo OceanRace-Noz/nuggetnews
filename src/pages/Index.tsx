@@ -31,9 +31,9 @@ export default function Index() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,#E7AB31_0%,#1C1C1E_100%)] -z-10" />
         <Header />
 
-        <div className="flex flex-col items-center gap-8 md:gap-10 mt-10 md:mt-[50px] w-full max-w-[1200px]">
+        <div className="flex flex-col items-center gap-1 md:gap-4 mt-10 md:mt-[50px] w-full max-w-[1200px]">
           <Hero />
-          <EmailSignupForm className="w-full md:max-w-[800px] mx-auto" />
+          <EmailSignupForm className="w-full md:max-w-[800px] mx-auto mt-0 md:mt-4" />
           <FeatureList features={features} className="mt-6 md:mt-[30px]" />
         </div>
       </main>
