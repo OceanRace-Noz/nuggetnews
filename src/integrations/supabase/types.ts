@@ -9,7 +9,7 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      "nugget_wartelist_emails": {
+      nugget_wartelist_emails: {
         Row: {
           created_at: string | null
           email: string
