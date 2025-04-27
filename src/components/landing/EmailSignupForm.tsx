@@ -80,7 +80,7 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
     <div className="px-6 md:px-0 w-full">
       <form 
         onSubmit={handleSubmit} 
-        className={`flex flex-row items-center justify-between gap-2 border shadow-[0px_0px_24px_8px_rgba(234,174,51,0.65)] bg-[rgba(29,29,29,0.5)] p-2 rounded-[50px] border-solid border-[#C7881F] w-full max-w-[600px] mx-auto ${className}`}
+        className={`flex flex-row items-center justify-between gap-2 border bg-[rgba(29,29,29,0.5)] p-2 rounded-[50px] border-solid border-[#C7881F] w-full max-w-[600px] mx-auto ${className}`}
         aria-label="Email signup form"
       >
         <input
