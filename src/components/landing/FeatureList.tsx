@@ -1,4 +1,3 @@
-
 import React from "react";
 interface Feature {
   icon: string;
@@ -23,7 +22,7 @@ export const FeatureList: React.FC<FeatureListProps> = ({
           </div>)}
       </div>
       {/* Last feature centered below */}
-      <div className="col-span-2 flex justify-center md:hidden">
+      <div className="col-span-2 flex justify-center md:hidden my-0">
         {features.slice(2, 3).map((feature, index) => <div key={index} className="flex flex-col items-center gap-2.5">
             <img src={feature.icon} alt={`${feature.title} Icon`} className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] rounded-[50px] border-[0.5px] border-solid border-[#F2EFEF]" />
             <h3 className="text-white text-center font-normal text-sm md:text-base">
@@ -33,7 +32,7 @@ export const FeatureList: React.FC<FeatureListProps> = ({
       </div>
       {/* Desktop layout */}
       <div className="hidden md:flex md:justify-between md:w-full md:gap-5">
-        {features.map((feature, index) => <div key={index} className="flex flex-col items-center gap-2.5 md:w-full my-[16px]">
+        {features.map((feature, index) => <div key={index} className="flex flex-col items-center gap-2.5 md:w-full">
             <img src={feature.icon} alt={`${feature.title} Icon`} className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] rounded-[50px] border-[0.5px] border-solid border-[#F2EFEF]" />
             <h3 className="text-white text-center font-normal text-sm md:text-base">
               {feature.title}
