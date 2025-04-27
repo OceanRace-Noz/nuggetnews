@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Header } from "@/components/landing/Header";
 import { Hero } from "@/components/landing/Hero";
@@ -41,10 +40,10 @@ export default function Index() {
         <div className="flex flex-col items-center gap-6 md:gap-8 mt-10 md:mt-[50px] w-full">
           <Hero />
           
-          <section className="flex flex-col items-center gap-4 w-full">
+          <section className="flex flex-col items-center gap-4 w-full mb-12">
             <h2 className="text-[rgba(228,228,228,1)] text-center font-medium leading-6">
               <span className="text-base md:text-lg font-fredoka w-full max-w-[600px] block mx-auto">
-                <span className="font-light">Trag dich jetzt ein und sei unter den Ersten, die </span>
+                <span className="font-light">Trag dich jetzt ein und sei unter den Ersten, die </span> 
                 Nugget
                 <span className="font-light"> ausprobieren.</span>
               </span>
