@@ -1,4 +1,3 @@
-
 import React from "react";
 
 interface Feature {
@@ -16,10 +15,10 @@ export const FeatureList: React.FC<FeatureListProps> = ({
   className
 }) => {
   return (
-    <section className={`grid grid-cols-2 md:flex gap-6 md:gap-5 px-6 md:px-0 ${className}`}>
-      <div className="col-span-2 md:col-span-1 flex justify-center md:block">
+    <section className={`grid grid-cols-2 md:flex justify-center gap-6 md:gap-5 px-6 md:px-0 ${className}`}>
+      <div className="col-span-2 md:col-span-1 flex justify-center gap-6 md:gap-5">
         {features.slice(0, 2).map((feature, index) => (
-          <div key={index} className="flex flex-col items-center gap-2.5 mx-3 md:mx-0">
+          <div key={index} className="flex flex-col items-center gap-2.5">
             <img 
               src={feature.icon} 
               alt={`${feature.title} Icon`} 
