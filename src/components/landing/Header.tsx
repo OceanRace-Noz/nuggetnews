@@ -16,8 +16,9 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
         className="w-[120px] md:w-[150px] h-auto object-contain" 
       />
       <div className="border border-[#EAAE33] rounded-full px-4 py-2 text-sm text-white">
-        🔥 Bald verfügbar
+        Coming soon
       </div>
     </header>
   );
 };
+
