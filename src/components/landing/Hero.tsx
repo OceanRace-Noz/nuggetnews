@@ -1,15 +1,13 @@
 import React from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
-
 interface HeroProps {
   className?: string;
 }
-
-export const Hero: React.FC<HeroProps> = ({ className }) => {
+export const Hero: React.FC<HeroProps> = ({
+  className
+}) => {
   const isMobile = useIsMobile();
-  
-  return (
-    <section className={`flex flex-col items-center px-6 md:px-[120px] ${className}`}>
+  return <section className={`flex flex-col items-center px-6 md:px-[120px] ${className}`}>
       <div>
         <div className="relative">
           <svg id="209:942" width="720" height="100" viewBox="0 0 720 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full max-w-[720px] h-auto">
@@ -32,7 +30,9 @@ export const Hero: React.FC<HeroProps> = ({ className }) => {
             <path d="M416.75 49.9955C417.925 49.7195 418.635 49.6355 419.645 50.8342C420.033 52.0084 420.033 52.0084 420.01 53.3503C419.557 55.1274 419.164 55.8261 418.209 56.705C417.228 56.3695 417.228 56.3695 416.385 55.3631C416.043 53.7277 416.043 53.7277 416.02 52.0084C416.261 51.3441 416.502 50.6799 416.75 49.9955Z" fill="#AE6228"></path> 
             <path d="M490.712 45.0623C491.887 45.3383 492.597 45.4223 493.607 44.2236C493.995 43.0494 493.995 43.0494 493.972 41.7075C493.519 39.9304 493.126 39.2317 492.171 38.3528C491.19 38.6883 491.19 38.6883 490.347 39.6947C490.005 41.3301 490.005 41.3301 489.982 43.0494C490.223 43.7137 490.463 44.3779 490.712 45.0623Z" fill="#AE6228"></path> 
             <path d="M393.382 22.2947C394.124 22.2947 394.866 22.2947 395.631 22.2947C396.339 23.608 395.954 24.6492 395.631 26.0486C395.185 26.3239 394.74 26.5991 394.281 26.8828C394.43 26.3322 394.578 25.7816 394.731 25.2144C394.286 25.0768 393.84 24.9391 393.382 24.7973C393.827 24.6597 394.272 24.522 394.731 24.3802C394.137 24.3802 393.544 24.3802 392.932 24.3802C392.635 24.2426 392.338 24.1049 392.032 23.9631C392.181 23.6878 392.329 23.4126 392.482 23.1289C392.779 23.1289 393.076 23.1289 393.382 23.1289C393.382 22.8536 393.382 22.5784 393.382 22.2947Z" fill="#AE6228"></path> 
-            <text fill="#E4E4E4" xmlSpace="preserve" style={{ whiteSpace: "pre" }} fontFamily="Unbounded" fontSize="32" letterSpacing="0.02em"><tspan x="211.559" y="51.4222">Wie ein Nugget</tspan></text>
+            <text fill="#E4E4E4" xmlSpace="preserve" style={{
+            whiteSpace: "pre"
+          }} fontFamily="Unbounded" fontSize="32" letterSpacing="0.02em"><tspan x="211.559" y="51.4222">Wie ein Nugget</tspan></text>
             <defs>
               <filter id="filter0_df_209_942" x="352.259" y="0.832947" width="170.689" height="81.1962" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
                 <feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood>
@@ -51,11 +51,16 @@ export const Hero: React.FC<HeroProps> = ({ className }) => {
       </div>
 
       <div className="flex flex-col items-center">
-        <h1 className="font-unbounded text-[36px] md:text-[48px] text-[#F2EFEF] text-center font-normal leading-[1.4] mb-2">
+        <h1 className="font-unbounded text-[48px] md:text-[48px] text-[#F2EFEF] text-center font-normal leading-[1.5] mb-0 my--5">
           Kompakte News für <br className="md:hidden" />
           <span className="md:block">deinen Alltag.</span>
         </h1>
       </div>
-    </section>
-  );
+
+      <h2 className="text-[rgba(228,228,228,1)] text-center font-medium leading-6 mt-6">
+        <span className="text-base md:text-lg font-light w-full max-w-[600px] block mx-auto">
+          Trag dich jetzt ein und sei unter den Ersten, die Nugget ausprobieren.
+        </span>
+      </h2>
+    </section>;
 };
