@@ -1,5 +1,7 @@
+
 import React from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Newspaper } from "lucide-react";
 
 interface HeroProps {
   className?: string;
@@ -50,8 +52,11 @@ export const Hero: React.FC<HeroProps> = ({ className }) => {
         </div>
       </div>
 
-      <div className="flex flex-col items-center">
-        <h1 className="font-unbounded text-[36px] md:text-[48px] text-[#F2EFEF] text-center font-normal leading-[1.4] mb-4">
+      <div className="flex flex-col items-center relative">
+        <Newspaper 
+          className="absolute -z-10 opacity-20 text-[#EAAE33] w-32 h-32 md:w-48 md:h-48 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" 
+        />
+        <h1 className="font-unbounded text-[36px] md:text-[48px] text-[#F2EFEF] text-center font-normal leading-[1.4] mb-2 relative z-10">
           Kompakte News für <br className="md:hidden" />
           <span className="md:block">deinen Alltag.</span>
         </h1>
@@ -65,3 +70,4 @@ export const Hero: React.FC<HeroProps> = ({ className }) => {
     </section>
   );
 };
+
