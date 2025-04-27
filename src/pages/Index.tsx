@@ -27,8 +27,8 @@ export default function Index() {
         href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500&family=Fredoka:wght@400;500&display=swap"
         rel="stylesheet"
       />
-      <main className="relative max-w-none w-full min-h-screen flex flex-col items-center justify-center mx-auto">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,#E7AB31_0%,#1C1C1E_100%)] -z-10" />
+      <main className="relative w-full min-h-[120vh] flex flex-col items-center justify-start mx-auto">
+        <div className="fixed inset-0 bg-[radial-gradient(circle_at_bottom,#E7AB31_0%,#1C1C1E_100%)] -z-10" />
         <Header />
 
         <div className="flex flex-col items-center gap-8 md:gap-10 mt-10 md:mt-[50px] w-full">
