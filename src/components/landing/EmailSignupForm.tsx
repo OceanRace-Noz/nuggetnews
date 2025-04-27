@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { supabase } from "@/integrations/supabase/client";
@@ -80,7 +79,7 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
     <div className="px-6 md:px-0 w-full">
       <form 
         onSubmit={handleSubmit} 
-        className={`flex flex-row items-center gap-4 border shadow-[0px_0px_12px_0px_rgba(234,174,51,0.55)] bg-[rgba(29,29,29,0.5)] px-6 py-3 rounded-[50px] border-solid border-[#C7881F] w-full max-w-[600px] mx-auto ${className}`}
+        className={`flex flex-row items-center gap-4 border shadow-[0px_0px_12px_0px_rgba(234,174,51,0.55)] bg-[rgba(29,29,29,0.5)] px-6 py-2 rounded-[50px] border-solid border-[#C7881F] w-full max-w-[600px] mx-auto ${className}`}
         aria-label="Email signup form"
       >
         <input
@@ -88,25 +87,25 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
           value={email}
           onChange={handleEmailChange}
           placeholder="Gib deine E-Mail ein"
-          className={`bg-transparent text-left text-lg text-[#A9A9A9] focus:text-[#F1F0FB] transition-colors font-fredoka font-normal outline-none w-full ${!isValid ? "border-b border-red-500" : ""}`}
+          className={`bg-transparent text-left text-base text-[#A9A9A9] focus:text-[#F1F0FB] transition-colors font-fredoka font-normal outline-none w-full ${!isValid ? "border-b border-red-500" : ""}`}
           aria-label="Email input"
           disabled={isSubmitting}
         />
         <button
           type="submit"
           aria-label="Submit email"
-          className={`flex items-center justify-center cursor-pointer bg-[#09202F] hover:bg-[#0c2e43] transition-colors px-4 py-3 rounded-[50px] whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed`}
+          className={`flex items-center justify-center cursor-pointer bg-[#09202F] hover:bg-[#0c2e43] transition-colors px-3 py-2 rounded-[50px] whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed`}
           disabled={isSubmitting}
         >
-          <span className="text-[#F1F0FB] text-lg font-fredoka font-normal mr-2">
+          <span className="text-[#F1F0FB] text-base font-fredoka font-normal mr-2">
             Los geht's!
           </span>
-          <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="20" height="16" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13.3333 4.32043L20 9.8621M20 9.8621L13.3333 15.4038M20 9.8621L4 9.8621" stroke="#A9A9A9" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </button>
         {!isValid && (
-          <p className="absolute -bottom-6 left-6 text-red-500 text-sm">
+          <p className="absolute -bottom-6 left-6 text-xs text-red-500">
             Bitte gib eine gültige E-Mail-Adresse ein.
           </p>
         )}
@@ -114,4 +113,3 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
     </div>
   );
 };
-
