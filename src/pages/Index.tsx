@@ -34,7 +34,7 @@ export default function Index() {
         <div className="flex flex-col items-center gap-8 md:gap-10 mt-10 md:mt-[50px] w-full">
           <Hero />
           <EmailSignupForm />
-          <FeatureList features={features} className="mt-6 md:mt-[30px]" />
+          <FeatureList features={features} className="mt-6 md:mt-[10px]" />
         </div>
       </main>
     </>

@@ -79,7 +79,7 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
   return (
     <form 
       onSubmit={handleSubmit} 
-      className={`flex flex-col md:flex-row items-center gap-4 md:gap-2.5 border shadow-[0px_0px_12px_0px_rgba(234,174,51,0.55)] bg-[rgba(29,29,29,0.5)] px-4 md:px-5 py-3 md:py-[5px] rounded-[50px] border-solid border-[#C7881F] w-full max-w-[90%] md:max-w-none ${className}`}
+      className={`flex flex-col md:flex-row items-center gap-4 md:gap-2.5 border shadow-[0px_0px_12px_0px_rgba(234,174,51,0.55)] bg-[rgba(29,29,29,0.5)] px-4 md:px-5 py-3 md:py-[5px] rounded-[50px] border-solid border-[#C7881F] w-full max-w-[600px] ${className}`}
       aria-label="Email signup form"
     >
       <input
