@@ -51,7 +51,7 @@ export const Hero: React.FC<HeroProps> = ({
       </div>
 
       <div className="flex flex-col items-center">
-        <h1 className="font-unbounded text-[48px] md:text-[48px] text-[#F2EFEF] text-center font-normal leading-[1.5] mb-0 my--6">
+        <h1 className="font-unbounded text-[48px] md:text-[48px] text-[#F2EFEF] text-center font-normal leading-[1.5] mb-0 my--5">
           Kompakte News für <br className="md:hidden" />
           <span className="md:block">deinen Alltag.</span>
         </h1>
