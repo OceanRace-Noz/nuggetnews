@@ -51,17 +51,18 @@ export const Hero: React.FC<HeroProps> = ({ className }) => {
       </div>
 
       <div className="flex flex-col items-center md:mt-[10px]">
-        <h1 className="font-unbounded text-[36px] md:text-[48px] text-[#F2EFEF] text-center font-normal leading-[1.4] mb-8">
+        <h1 className="font-unbounded text-[36px] md:text-[48px] text-[#F2EFEF] text-center font-normal leading-[1.4] mb-4">
           Kompakte News für <br className="md:hidden" />
           <span className="md:block">deinen Alltag.</span>
         </h1>
       </div>
 
-      <h2 className="text-[rgba(228,228,228,1)] text-center font-medium leading-6 mb-4 md:mt-4">
+      <h2 className="text-[rgba(228,228,228,1)] text-center font-medium leading-6 mb-4 md:mt-4 px-6 sm:px-6 md:px-[120px]">
         <span className="text-base md:text-lg font-light w-full max-w-[600px] block mx-auto">
           Trag dich jetzt ein und sei unter den Ersten, die Nugget ausprobieren.
         </span>
       </h2>
+
     </section>
   );
 };
