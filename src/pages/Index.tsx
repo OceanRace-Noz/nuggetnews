@@ -27,6 +27,11 @@ export default function Index() {
         href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500&family=Fredoka:wght@300;400;500&display=swap"
         rel="stylesheet"
       />
+      <style jsx global>{`
+        .font-fredoka {
+          font-family: 'Fredoka', sans-serif;
+        }
+      `}</style>
       <main className="relative w-full min-h-[120vh] flex flex-col items-center justify-start mx-auto">
         <div className="fixed inset-0 bg-[radial-gradient(circle_at_bottom,#E7AB31_0%,#1C1C1E_100%)] -z-10" />
         <Header />
