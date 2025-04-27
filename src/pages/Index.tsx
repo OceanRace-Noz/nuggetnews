@@ -38,10 +38,21 @@ export default function Index() {
         <div className="fixed inset-0 bg-[radial-gradient(circle_at_bottom,#E7AB31_0%,#1C1C1E_100%)] -z-10" />
         <Header />
 
-        <div className="flex flex-col items-center gap-4 md:gap-6 mt-10 md:mt-[50px] w-full">
+        <div className="flex flex-col items-center gap-24 mt-10 md:mt-[50px] w-full">
           <Hero />
-          <EmailSignupForm />
-          <FeatureList features={features} className="mt-6" />
+          
+          <section className="flex flex-col items-center gap-4 w-full">
+            <h2 className="text-[rgba(228,228,228,1)] text-center font-medium leading-6">
+              <span className="text-base md:text-lg font-fredoka w-full max-w-[600px] block mx-auto">
+                <span className="font-light">Trag dich jetzt ein und sei unter den Ersten, die </span>
+                Nugget
+                <span className="font-light"> ausprobieren.</span>
+              </span>
+            </h2>
+            <EmailSignupForm />
+          </section>
+
+          <FeatureList features={features} />
         </div>
       </main>
     </>

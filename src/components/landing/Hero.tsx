@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -57,14 +56,6 @@ export const Hero: React.FC<HeroProps> = ({ className }) => {
           <span className="md:block">deinen Alltag.</span>
         </h1>
       </div>
-
-      <h2 className="text-[rgba(228,228,228,1)] text-center font-medium leading-6 mt-6">
-        <span className="text-base md:text-lg font-fredoka w-full max-w-[600px] block mx-auto">
-          <span className="font-light">Trag dich jetzt ein und sei unter den Ersten, die </span>
-          Nugget
-          <span className="font-light"> ausprobieren.</span>
-        </span>
-      </h2>
     </section>
   );
 };
