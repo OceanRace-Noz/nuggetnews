@@ -38,7 +38,7 @@ export default function Index() {
         <div className="fixed inset-0 bg-[radial-gradient(circle_at_bottom,#E7AB31_0%,#0C0C36_100%)] -z-10" />
         <Header />
 
-        <div className="flex flex-col items-center gap-6 md:gap-8 mt-10 md:mt-[50px] w-full">
+        <div className="flex flex-col items-center gap-4 md:gap-6 mt-10 md:mt-[50px] w-full">
           <Hero />
           
           <h2 className="text-[#C8C8C9] text-center font-medium leading-6 px-6">
