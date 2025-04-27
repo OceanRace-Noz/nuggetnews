@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { supabase } from "@/integrations/supabase/client";
@@ -78,7 +79,7 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
   return (
     <form 
       onSubmit={handleSubmit} 
-      className={`flex flex-col items-center gap-4 border shadow-[0px_0px_12px_0px_rgba(234,174,51,0.55)] bg-[rgba(29,29,29,0.5)] px-6 py-3 rounded-[50px] border-solid border-[#C7881F] w-full max-w-[600px] mx-6 ${isMobile ? 'px-6' : ''} ${className}`}
+      className={`flex flex-col md:flex-row items-center gap-4 border shadow-[0px_0px_12px_0px_rgba(234,174,51,0.55)] bg-[rgba(29,29,29,0.5)] px-6 py-3 rounded-[50px] border-solid border-[#C7881F] w-full max-w-[600px] mx-6 ${className}`}
       aria-label="Email signup form"
     >
       <input
@@ -86,14 +87,14 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
         value={email}
         onChange={handleEmailChange}
         placeholder="Gib deine E-Mail ein"
-        className={`bg-transparent text-center text-[rgba(169,169,169,1)] text-base font-fredoka font-normal outline-none w-full ${!isValid ? "border-b border-red-500" : ""}`}
+        className={`bg-transparent text-center md:text-left text-[rgba(169,169,169,1)] text-base font-fredoka font-normal outline-none w-full ${!isValid ? "border-b border-red-500" : ""}`}
         aria-label="Email input"
         disabled={isSubmitting}
       />
       <button
         type="submit"
         aria-label="Submit email"
-        className="flex items-center justify-center cursor-pointer bg-[#09202F] hover:bg-[#0c2e43] transition-colors px-4 py-3 rounded-[50px] w-full disabled:opacity-50 disabled:cursor-not-allowed"
+        className={`flex items-center justify-center cursor-pointer bg-[#09202F] hover:bg-[#0c2e43] transition-colors px-4 py-3 rounded-[50px] w-full md:w-auto whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed`}
         disabled={isSubmitting}
       >
         <span className="text-[rgba(242,239,239,1)] text-lg font-fredoka font-medium mr-2">
