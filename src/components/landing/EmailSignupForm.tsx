@@ -98,7 +98,7 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
           disabled={isSubmitting}
         >
           <span className="text-[#F1F0FB] text-base font-fredoka font-normal mr-2">
-            Auf die Warteliste
+            Los geht's!
           </span>
           <svg width="16" height="16" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13.3333 4.32043L20 9.8621M20 9.8621L13.3333 15.4038M20 9.8621L4 9.8621" stroke="#A9A9A9" strokeLinecap="round" strokeLinejoin="round"/>
