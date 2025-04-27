@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { supabase } from "@/integrations/supabase/client";
@@ -79,7 +78,7 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
   return (
     <form 
       onSubmit={handleSubmit} 
-      className={`flex flex-col items-center gap-4 border shadow-[0px_0px_12px_0px_rgba(234,174,51,0.55)] bg-[rgba(29,29,29,0.5)] px-6 py-3 rounded-[50px] border-solid border-[#C7881F] w-full max-w-[600px] mx-6 ${className}`}
+      className={`flex flex-col items-center gap-4 border shadow-[0px_0px_12px_0px_rgba(234,174,51,0.55)] bg-[rgba(29,29,29,0.5)] px-6 py-3 rounded-[50px] border-solid border-[#C7881F] w-full max-w-[600px] mx-6 ${isMobile ? 'px-6' : ''} ${className}`}
       aria-label="Email signup form"
     >
       <input
