@@ -40,10 +40,13 @@ export default function Index() {
 
         <div className="flex flex-col items-center gap-16 md:gap-24 mt-10 md:mt-[50px] w-full">
           <Hero />
-          <EmailSignupForm />
+          <div className="gap-2 md:gap-4"> {/* Added a very small gap here */}
+            <EmailSignupForm />
+          </div>
           <FeatureList features={features} className="mt-6" />
         </div>
       </main>
     </>
   );
 }
+
