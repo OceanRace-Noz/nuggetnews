@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { supabase } from "@/integrations/supabase/client";
@@ -95,10 +94,10 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
         <button
           type="submit"
           aria-label="Submit email"
-          className={`flex items-center justify-center cursor-pointer bg-[#09202F] hover:bg-[#0c2e43] transition-colors p-2 rounded-[50px] whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed`}
+          className={`flex items-center justify-center cursor-pointer bg-[#09202F] hover:bg-[#0c2e43] transition-colors px-5 py-2 rounded-[50px] whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed`}
           disabled={isSubmitting}
         >
-          <span className="text-[#F1F0FB] text-sm font-fredoka font-normal mr-1">
+          <span className="text-[#F1F0FB] text-base font-fredoka font-normal mr-2">
             Los geht's!
           </span>
           <svg width="16" height="16" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -114,4 +113,3 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
     </div>
   );
 };
-
