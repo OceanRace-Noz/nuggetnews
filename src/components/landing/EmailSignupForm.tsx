@@ -79,7 +79,7 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
   return (
     <form 
       onSubmit={handleSubmit} 
-      className={`flex flex-col md:flex-row items-center gap-4 md:gap-2.5 border shadow-[0px_0px_12px_0px_rgba(234,174,51,0.55)] bg-[rgba(29,29,29,0.5)] px-4 md:px-5 py-3 md:py-[5px] rounded-[50px] border-solid border-[#C7881F] mx-6 md:mx-auto w-auto md:w-[600px] ${className}`}
+      className={`flex flex-col items-center gap-4 border shadow-[0px_0px_12px_0px_rgba(234,174,51,0.55)] bg-[rgba(29,29,29,0.5)] px-6 py-3 rounded-[50px] border-solid border-[#C7881F] w-full max-w-[600px] ${className}`}
       aria-label="Email signup form"
     >
       <input
@@ -87,17 +87,17 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
         value={email}
         onChange={handleEmailChange}
         placeholder="Gib deine E-Mail ein"
-        className={`bg-transparent text-center md:text-left text-[rgba(169,169,169,1)] text-base md:text-xl font-fredoka font-normal outline-none flex-1 min-w-0 w-full md:w-auto ${!isValid ? "border-b border-red-500" : ""}`}
+        className={`bg-transparent text-center text-[rgba(169,169,169,1)] text-base font-fredoka font-normal outline-none w-full ${!isValid ? "border-b border-red-500" : ""}`}
         aria-label="Email input"
         disabled={isSubmitting}
       />
       <button
         type="submit"
         aria-label="Submit email"
-        className="flex items-center justify-center cursor-pointer bg-[#09202F] hover:bg-[#0c2e43] transition-colors px-4 md:px-5 py-3 md:py-[15px] rounded-[50px] w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
+        className="flex items-center justify-center cursor-pointer bg-[#09202F] hover:bg-[#0c2e43] transition-colors px-4 py-3 rounded-[50px] w-full disabled:opacity-50 disabled:cursor-not-allowed"
         disabled={isSubmitting}
       >
-        <span className="text-[rgba(242,239,239,1)] text-lg md:text-xl font-fredoka font-medium mr-2">
+        <span className="text-[rgba(242,239,239,1)] text-lg font-fredoka font-medium mr-2">
           Los geht's!
         </span>
         <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
