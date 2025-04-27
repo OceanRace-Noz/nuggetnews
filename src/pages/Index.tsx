@@ -52,7 +52,7 @@ export default function Index() {
             <EmailSignupForm />
           </section>
 
-          <FeatureList features={features} className="gap-6 md:gap-8" />
+          <FeatureList features={features} className="gap-6 md:gap-8 mt-8 md:mt-12" />
         </div>
       </main>
     </>
