@@ -34,7 +34,7 @@ export default function Index() {
         `
       }} />
       <main className="relative w-full min-h-[120vh] flex flex-col items-center justify-start mx-auto">
-        <div className="fixed inset-0 bg-[radial-gradient(circle_at_bottom,#E7AB31_0%,#1C1C1E_100%)] -z-10" />
+        <div className="fixed inset-0 bg-[radial-gradient(circle_at_bottom,#E7AB31_0%,#0C0C36_100%)] -z-10" />
         <Header />
 
         <div className="flex flex-col items-center gap-6 md:gap-8 mt-10 md:mt-[50px] w-full">
