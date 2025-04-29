@@ -91,6 +91,7 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
           className={`bg-transparent text-left text-base md:text-base text-[#A9A9A9] focus:text-[#F1F0FB] transition-colors font-fredoka font-normal outline-none flex-1 px-3 min-w-0 truncate ${!isValid ? "border-b border-red-500" : ""}`}
           aria-label="Email input"
           disabled={isSubmitting}
+          style={{ WebkitAppearance: "none", backgroundColor: "transparent" }}
         />
         <button
           type="submit"
@@ -116,4 +117,3 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
 };
 
 export default EmailSignupForm;
-
