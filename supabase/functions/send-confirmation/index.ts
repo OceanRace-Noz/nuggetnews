@@ -35,9 +35,14 @@ serve(async (req) => {
 
     console.log(`Sending confirmation email to: ${email}`);
 
+    // For development - always send to the account owner's email
+    // In production with a verified domain, you can send to any email
+    const developmentMode = true; // Set to false when you have a verified domain
+    const toEmail = developmentMode ? "nuggetnews.de@gmail.com" : email;
+
     const { data, error } = await resend.emails.send({
       from: "Nugget <onboarding@resend.dev>",
-      to: [email],
+      to: [toEmail],
       subject: "Willkommen auf der Nugget Warteliste!",
       html: `
         <div style="font-family: 'Fredoka', sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
@@ -54,6 +59,9 @@ serve(async (req) => {
             <a href="https://nugget.news" style="color: #E7AB31; text-decoration: none;">nugget.news</a> 
             angemeldet hast.
           </p>
+          <div style="color: #999; font-size: 12px; margin-top: 20px;">
+            ${developmentMode ? `Original recipient: ${email}` : ''}
+          </div>
         </div>
       `,
     });
@@ -71,7 +79,12 @@ serve(async (req) => {
 
     console.log("Email sent successfully:", data);
     return new Response(
-      JSON.stringify({ success: true, message: "Confirmation email sent" }),
+      JSON.stringify({ 
+        success: true, 
+        message: "Confirmation email sent",
+        developmentMode,
+        actualRecipient: toEmail
+      }),
       { 
         headers: { ...corsHeaders, "Content-Type": "application/json" } 
       }
