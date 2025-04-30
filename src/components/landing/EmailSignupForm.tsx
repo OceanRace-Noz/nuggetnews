@@ -20,6 +20,24 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
     setIsValid(true);
   };
 
+  const sendConfirmationEmail = async (email: string) => {
+    try {
+      const { data, error } = await supabase.functions.invoke('send-confirmation', {
+        body: { email }
+      });
+      
+      if (error) {
+        console.error("Error sending confirmation email:", error);
+        // We don't want to show an error to the user if the confirmation email fails
+        // as they are already signed up successfully
+      } else {
+        console.log("Confirmation email sent:", data);
+      }
+    } catch (error) {
+      console.error("Failed to invoke send-confirmation function:", error);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -60,8 +78,11 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
 
       toast({
         title: "Erfolgreich angemeldet!",
-        description: "Wir melden uns bald bei dir.",
+        description: "Wir haben dir eine Bestätigungsmail gesendet.",
       });
+      
+      // Send confirmation email
+      await sendConfirmationEmail(email);
       
       setEmail("");
     } catch (error) {
@@ -91,6 +112,7 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
           className={`bg-transparent text-left text-base md:text-base text-[#A9A9A9] focus:text-[#F1F0FB] transition-colors font-fredoka font-normal outline-none flex-1 px-3 min-w-0 truncate ${!isValid ? "border-b border-red-500" : ""}`}
           aria-label="Email input"
           disabled={isSubmitting}
+          style={{ WebkitAppearance: "none", backgroundColor: "transparent" }}
         />
         <button
           type="submit"
@@ -116,4 +138,3 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
 };
 
 export default EmailSignupForm;
-
