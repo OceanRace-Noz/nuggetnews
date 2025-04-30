@@ -78,7 +78,7 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
 
       toast({
         title: "Erfolgreich angemeldet!",
-        description: "Wir haben dir eine Bestätigungsmail gesendet.",
+        description: "Wir melden uns, sobald Nugget verfügbar ist.",
       });
       
       // Send confirmation email
