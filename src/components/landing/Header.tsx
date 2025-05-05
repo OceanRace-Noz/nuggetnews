@@ -11,7 +11,7 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
       className={`flex items-center justify-between w-[90%] md:w-4/5 max-w-[1200px] mt-5 ${className}`}
     >
       <img 
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/3cdecd34ea3c5a897195254b4326a771dabb57fc?placeholderIfAbsent=true" 
+        src="/logo.png" 
         alt="Nugget logo" 
         className="w-[120px] md:w-[150px] h-auto object-contain" 
       />
