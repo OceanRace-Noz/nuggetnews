@@ -21,9 +21,10 @@ export default function VerifyEmail() {
 
       try {
         // Update the email record to mark it as confirmed
+        // Use type assertion to fix the TypeScript error
         const { data, error } = await supabase
           .from('nugget_wartelist_emails')
-          .update({ is_confirmed: true })
+          .update({ is_confirmed: true } as any)
           .eq('id', id)
           .select();
 
