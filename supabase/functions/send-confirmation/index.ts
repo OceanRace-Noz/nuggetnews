@@ -36,16 +36,13 @@ serve(async (req) => {
 
     console.log(`Sending confirmation email to: ${email} with id: ${id}`);
 
-    // For development - always send to the account owner's email
-    // In production with a verified domain, you can send to any email
-    const developmentMode = true; // Set to false when you have a verified domain
+    // Set to false to send to the actual recipient email
+    const developmentMode = false;
     const toEmail = developmentMode ? "nuggetnews.de@gmail.com" : email;
 
-    // Get the base URL from the request URL or fallback to a default
-    const baseUrl = new URL(req.url).origin || "https://nugget.news";
-    
-    // Create a verification link with the user's ID as a parameter
-    const verificationLink = `${baseUrl}/verify?id=${id}`;
+    // Fix the verification URL to use the actual website domain
+    // Instead of the Supabase function URL
+    const verificationLink = `https://nugget.news/verify?id=${id}`;
     
     console.log(`Generated verification link: ${verificationLink}`);
     
