@@ -2,7 +2,7 @@
 import React from "react";
 import { Header } from "@/components/landing/Header";
 import { Hero } from "@/components/landing/Hero";
-import { EmailSignupForm } from "@/components/landing/EmailSignup";
+import { EmailSignupForm } from "@/components/landing/EmailSignupForm";
 import { FeatureList } from "@/components/landing/FeatureList";
 
 const features = [

@@ -41,7 +41,6 @@ serve(async (req) => {
     const toEmail = developmentMode ? "nuggetnews.de@gmail.com" : email;
 
     // Fix the verification URL to use the actual website domain
-    // Instead of the Supabase function URL
     const verificationLink = `https://nugget.news/verify?id=${id}`;
     
     console.log(`Generated verification link: ${verificationLink}`);
@@ -75,9 +74,6 @@ serve(async (req) => {
             <a href="https://nugget.news" style="color: #E7AB31; text-decoration: none;">nugget.news</a> 
             angemeldet hast.
           </p>
-          <div style="color: #999; font-size: 12px; margin-top: 20px;">
-            ${developmentMode ? `Original recipient: ${email}` : ''}
-          </div>
         </div>
       `,
     });
