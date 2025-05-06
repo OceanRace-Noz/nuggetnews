@@ -1,15 +1,9 @@
 
-import React, { useState } from "react";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
-interface EmailSignupFormProps {
-  className?: string;
-}
-
-export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) => {
-  const isMobile = useIsMobile();
+export const useEmailSignup = () => {
   const [email, setEmail] = useState("");
   const [isValid, setIsValid] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -163,52 +157,11 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
     }
   };
 
-  return (
-    <div className="px-6 w-full">
-      <form 
-        onSubmit={handleSubmit} 
-        className={`flex flex-row items-center justify-between gap-2 border bg-[rgba(29,29,29,0.5)] p-2 rounded-[50px] border-solid border-[#C7881F] w-full max-w-[600px] mx-auto shadow-[0px_0px_12px_0px_rgba(234,174,51,0.7)] hover:shadow-[0px_0px_12px_2px_rgba(234,174,51,1)] transition-shadow ${className}`}
-        aria-label="Email signup form"
-      >
-        <input
-          type="text"
-          value={email}
-          onChange={handleEmailChange}
-          placeholder="Gib deine Email ein"
-          className={`bg-transparent text-left text-base md:text-base text-[#A9A9A9] focus:text-[#F1F0FB] transition-colors font-fredoka font-normal outline-none flex-1 px-3 min-w-0 truncate ${!isValid ? "border-b border-red-500" : ""}`}
-          aria-label="Email input"
-          disabled={isSubmitting}
-          style={{ WebkitAppearance: "none", backgroundColor: "transparent" }}
-        />
-        <button
-          type="submit"
-          aria-label="Submit email"
-          className={`flex items-center justify-center cursor-pointer bg-[#0C0C36] hover:bg-[#0C0C36]/80 transition-colors px-5 py-2.5 rounded-[50px] whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed shrink-0`}
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? (
-            <span className="text-[#F1F0FB] text-base font-fredoka font-normal">
-              Senden...
-            </span>
-          ) : (
-            <>
-              <span className="text-[#F1F0FB] text-base font-fredoka font-normal mr-2">
-                Los geht's!
-              </span>
-              <svg width="16" height="16" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13.3333 4.32043L20 9.8621M20 9.8621L13.3333 15.4038M20 9.8621L4 9.8621" stroke="#A9A9A9" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </>
-          )}
-        </button>
-        {!isValid && (
-          <p className="absolute -bottom-6 left-6 text-xs text-red-500">
-            Bitte gib eine gültige E-Mail-Adresse ein.
-          </p>
-        )}
-      </form>
-    </div>
-  );
+  return {
+    email,
+    isValid,
+    isSubmitting,
+    handleEmailChange,
+    handleSubmit,
+  };
 };
-
-export default EmailSignupForm;
