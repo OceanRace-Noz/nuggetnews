@@ -20,10 +20,10 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
     setIsValid(true);
   };
 
-  const sendConfirmationEmail = async (email: string) => {
+  const sendConfirmationEmail = async (email: string, id: string) => {
     try {
       const { data, error } = await supabase.functions.invoke('send-confirmation', {
-        body: { email }
+        body: { email, id }
       });
       
       if (error) {
@@ -66,7 +66,10 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
       // Try to insert the email
       const { data, error } = await supabase
         .from('nugget_wartelist_emails')
-        .insert([{ email }])
+        .insert([{ 
+          email, 
+          is_confirmed: false, // Default to false until they click the verification link
+        }])
         .select();
 
       if (error) {
@@ -75,14 +78,19 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
       }
 
       console.log("Email saved successfully:", data);
-
+      
+      // Show waiting for confirmation message
       toast({
-        title: "Erfolgreich angemeldet!",
-        description: "Wir melden uns, sobald Nugget verfügbar ist.",
+        title: "Fast geschafft!",
+        description: "Bitte bestätige deine E-Mail-Adresse, um die Anmeldung abzuschließen.",
       });
       
-      // Send confirmation email
-      await sendConfirmationEmail(email);
+      if (data && data[0] && data[0].id) {
+        // Send confirmation email with the record ID
+        await sendConfirmationEmail(email, data[0].id);
+      } else {
+        console.error("No ID returned from insertion");
+      }
       
       setEmail("");
     } catch (error) {
