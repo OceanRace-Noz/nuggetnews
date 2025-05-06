@@ -22,19 +22,31 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
 
   const sendConfirmationEmail = async (email: string, id: string) => {
     try {
+      console.log("Sending confirmation email to:", email, "with id:", id);
       const { data, error } = await supabase.functions.invoke('send-confirmation', {
         body: { email, id }
       });
       
       if (error) {
         console.error("Error sending confirmation email:", error);
-        // We don't want to show an error to the user if the confirmation email fails
-        // as they are already signed up successfully
+        toast({
+          variant: "destructive",
+          title: "Fehler beim Senden der Bestätigungs-E-Mail",
+          description: "Bitte versuche es später noch einmal.",
+        });
+        return false;
       } else {
-        console.log("Confirmation email sent:", data);
+        console.log("Confirmation email response:", data);
+        return true;
       }
     } catch (error) {
       console.error("Failed to invoke send-confirmation function:", error);
+      toast({
+        variant: "destructive",
+        title: "Fehler beim Senden der Bestätigungs-E-Mail",
+        description: "Bitte versuche es später noch einmal.",
+      });
+      return false;
     }
   };
 
@@ -63,6 +75,46 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
       
       console.log("Connection test successful:", connectionTest);
       
+      // Check if email already exists
+      const { data: existingEmails, error: existingError } = await supabase
+        .from('nugget_wartelist_emails')
+        .select('id, is_confirmed')
+        .eq('email', email);
+      
+      if (existingError) {
+        console.error("Error checking existing email:", existingError);
+        throw existingError;
+      }
+      
+      if (existingEmails && existingEmails.length > 0) {
+        const existingEmail = existingEmails[0];
+        
+        if (existingEmail.is_confirmed) {
+          toast({
+            title: "Du bist bereits angemeldet!",
+            description: "Deine E-Mail-Adresse ist bereits bestätigt.",
+          });
+          setEmail("");
+          setIsSubmitting(false);
+          return;
+        } else {
+          // Resend confirmation for existing unconfirmed email
+          console.log("Email exists but not confirmed, resending confirmation:", existingEmail);
+          const emailSent = await sendConfirmationEmail(email, existingEmail.id);
+          
+          if (emailSent) {
+            toast({
+              title: "Fast geschafft!",
+              description: "Bitte bestätige deine E-Mail-Adresse, um die Anmeldung abzuschließen. Wir haben dir erneut eine Bestätigungs-E-Mail gesendet.",
+            });
+            setEmail("");
+          }
+          
+          setIsSubmitting(false);
+          return;
+        }
+      }
+      
       // Try to insert the email
       const { data, error } = await supabase
         .from('nugget_wartelist_emails')
@@ -79,20 +131,26 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
 
       console.log("Email saved successfully:", data);
       
-      // Show waiting for confirmation message
-      toast({
-        title: "Fast geschafft!",
-        description: "Bitte bestätige deine E-Mail-Adresse, um die Anmeldung abzuschließen.",
-      });
-      
+      // Send confirmation email with the record ID
       if (data && data[0] && data[0].id) {
-        // Send confirmation email with the record ID
-        await sendConfirmationEmail(email, data[0].id);
+        const emailSent = await sendConfirmationEmail(email, data[0].id);
+        
+        if (emailSent) {
+          // Show waiting for confirmation message
+          toast({
+            title: "Fast geschafft!",
+            description: "Bitte bestätige deine E-Mail-Adresse, um die Anmeldung abzuschließen.",
+          });
+          setEmail("");
+        }
       } else {
         console.error("No ID returned from insertion");
+        toast({
+          variant: "destructive",
+          title: "Fehler",
+          description: "Deine Anmeldung konnte nicht abgeschlossen werden. Bitte versuche es später erneut.",
+        });
       }
-      
-      setEmail("");
     } catch (error) {
       console.error('Error saving email:', error);
       toast({
@@ -128,12 +186,20 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
           className={`flex items-center justify-center cursor-pointer bg-[#0C0C36] hover:bg-[#0C0C36]/80 transition-colors px-5 py-2.5 rounded-[50px] whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed shrink-0`}
           disabled={isSubmitting}
         >
-          <span className="text-[#F1F0FB] text-base font-fredoka font-normal mr-2">
-            Los geht's!
-          </span>
-          <svg width="16" height="16" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13.3333 4.32043L20 9.8621M20 9.8621L13.3333 15.4038M20 9.8621L4 9.8621" stroke="#A9A9A9" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          {isSubmitting ? (
+            <span className="text-[#F1F0FB] text-base font-fredoka font-normal">
+              Senden...
+            </span>
+          ) : (
+            <>
+              <span className="text-[#F1F0FB] text-base font-fredoka font-normal mr-2">
+                Los geht's!
+              </span>
+              <svg width="16" height="16" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.3333 4.32043L20 9.8621M20 9.8621L13.3333 15.4038M20 9.8621L4 9.8621" stroke="#A9A9A9" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </>
+          )}
         </button>
         {!isValid && (
           <p className="absolute -bottom-6 left-6 text-xs text-red-500">

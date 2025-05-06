@@ -11,51 +11,84 @@ export default function VerifyEmail() {
   
   const [verificationStatus, setVerificationStatus] = useState<'verifying' | 'success' | 'error'>('verifying');
   const [countdown, setCountdown] = useState(5);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
     const verifyEmail = async () => {
       if (!id) {
+        console.error("Verification error: No ID provided in the URL");
         setVerificationStatus('error');
+        setErrorMessage("Missing ID parameter in the verification link");
         return;
       }
 
+      console.log("Starting verification with ID:", id);
+
       try {
+        // Check if the email exists first
+        const { data: emailCheck, error: checkError } = await supabase
+          .from('nugget_wartelist_emails')
+          .select('*')
+          .eq('id', id)
+          .single();
+        
+        if (checkError || !emailCheck) {
+          console.error("Email record not found:", checkError);
+          setVerificationStatus('error');
+          setErrorMessage("Email record not found. The verification link may be invalid or expired.");
+          return;
+        }
+        
+        console.log("Found email record:", emailCheck);
+        
+        // If already confirmed, just show success
+        if (emailCheck.is_confirmed) {
+          console.log("Email was already confirmed");
+          setVerificationStatus('success');
+          startRedirectCountdown();
+          return;
+        }
+
         // Update the email record to mark it as confirmed
-        // Use type assertion to fix the TypeScript error
         const { data, error } = await supabase
           .from('nugget_wartelist_emails')
-          .update({ is_confirmed: true } as any)
+          .update({ is_confirmed: true })
           .eq('id', id)
           .select();
 
         if (error || !data || data.length === 0) {
-          console.error("Verification error:", error);
+          console.error("Verification update error:", error);
           setVerificationStatus('error');
+          setErrorMessage(error ? `Error: ${error.message}` : "Failed to update confirmation status");
         } else {
+          console.log("Email successfully confirmed:", data);
           setVerificationStatus('success');
-          
-          // Start countdown to redirect
-          const timer = setInterval(() => {
-            setCountdown((prevCount) => {
-              if (prevCount <= 1) {
-                clearInterval(timer);
-                navigate('/');
-                return 0;
-              }
-              return prevCount - 1;
-            });
-          }, 1000);
-          
-          return () => clearInterval(timer);
+          startRedirectCountdown();
         }
       } catch (error) {
         console.error("Error during verification:", error);
         setVerificationStatus('error');
+        setErrorMessage("An unexpected error occurred during verification");
       }
     };
 
     verifyEmail();
   }, [id, navigate]);
+  
+  const startRedirectCountdown = () => {
+    const timer = setInterval(() => {
+      setCountdown((prevCount) => {
+        if (prevCount <= 1) {
+          clearInterval(timer);
+          navigate('/');
+          return 0;
+        }
+        return prevCount - 1;
+      });
+    }, 1000);
+    
+    return () => clearInterval(timer);
+  };
 
   return (
     <main className="relative w-full min-h-screen flex flex-col items-center justify-start mx-auto">
@@ -69,6 +102,9 @@ export default function VerifyEmail() {
             <h1 className="text-[36px] md:text-[48px] text-white font-fredoka font-medium leading-[1.4]">
               Bestätige deine Email...
             </h1>
+            <p className="text-[20px] md:text-[24px] text-[#F1F0FB] font-fredoka font-normal leading-[1.5]">
+              Wir überprüfen deine E-Mail-Adresse. Bitte warte einen Moment.
+            </p>
           </>
         )}
 
@@ -109,7 +145,10 @@ export default function VerifyEmail() {
               Bestätigung fehlgeschlagen
             </h1>
             <p className="text-[20px] md:text-[24px] text-[#F1F0FB] font-fredoka font-normal leading-[1.5]">
-              Es gab einen Fehler bei der Bestätigung deiner Email-Adresse. Der Link ist möglicherweise abgelaufen oder ungültig.
+              Es gab einen Fehler bei der Bestätigung deiner Email-Adresse. {errorMessage || "Der Link ist möglicherweise abgelaufen oder ungültig."}
+            </p>
+            <p className="text-[16px] text-[#C8C8C9] font-fredoka mt-4">
+              Fehler-ID: {id || 'nicht verfügbar'}
             </p>
             <button 
               onClick={() => navigate('/')}
