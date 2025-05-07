@@ -36,12 +36,16 @@ serve(async (req) => {
 
     console.log(`Sending confirmation email to: ${email} with id: ${id}`);
 
-    // Set to false to send to the actual recipient email
-    const developmentMode = false;
+    // For development - always send to the account owner's email
+    // In production with a verified domain, you can send to any email
+    const developmentMode = true; // Set to false when you have a verified domain
     const toEmail = developmentMode ? "nuggetnews.de@gmail.com" : email;
 
-    // Fix the verification URL to use the actual website domain
-    const verificationLink = `https://nugget.news/verify?id=${id}`;
+    // Get the base URL from the request URL or fallback to a default
+    const baseUrl = new URL(req.url).origin || "https://nugget.news";
+    
+    // Create a verification link with the user's ID as a parameter
+    const verificationLink = `${baseUrl}/verify?id=${id}`;
     
     console.log(`Generated verification link: ${verificationLink}`);
     
@@ -74,6 +78,9 @@ serve(async (req) => {
             <a href="https://nugget.news" style="color: #E7AB31; text-decoration: none;">nugget.news</a> 
             angemeldet hast.
           </p>
+          <div style="color: #999; font-size: 12px; margin-top: 20px;">
+            ${developmentMode ? `Original recipient: ${email}` : ''}
+          </div>
         </div>
       `,
     });

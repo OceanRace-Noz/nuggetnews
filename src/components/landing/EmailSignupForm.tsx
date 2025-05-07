@@ -1,13 +1,15 @@
 
 import React, { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 interface EmailSignupFormProps {
   className?: string;
 }
 
 export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) => {
+  const isMobile = useIsMobile();
   const [email, setEmail] = useState("");
   const [isValid, setIsValid] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -168,28 +170,20 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
         className={`flex flex-row items-center justify-between gap-2 border bg-[rgba(29,29,29,0.5)] p-2 rounded-[50px] border-solid border-[#C7881F] w-full max-w-[600px] mx-auto shadow-[0px_0px_12px_0px_rgba(234,174,51,0.7)] hover:shadow-[0px_0px_12px_2px_rgba(234,174,51,1)] transition-shadow ${className}`}
         aria-label="Email signup form"
       >
-        <div className="relative flex-1">
-          <input
-            type="text"
-            value={email}
-            onChange={handleEmailChange}
-            placeholder="Gib deine Email ein"
-            className={`bg-transparent text-left text-base md:text-base text-[#A9A9A9] focus:text-[#F1F0FB] transition-colors font-fredoka font-normal outline-none flex-1 px-3 min-w-0 truncate ${!isValid ? "border-b border-red-500" : ""}`}
-            aria-label="Email input"
-            disabled={isSubmitting}
-            style={{ WebkitAppearance: "none", backgroundColor: "transparent" }}
-          />
-          {!isValid && (
-            <p className="absolute -bottom-6 left-6 text-xs text-red-500">
-              Bitte gib eine gültige E-Mail-Adresse ein.
-            </p>
-          )}
-        </div>
-        
+        <input
+          type="text"
+          value={email}
+          onChange={handleEmailChange}
+          placeholder="Gib deine Email ein"
+          className={`bg-transparent text-left text-base md:text-base text-[#A9A9A9] focus:text-[#F1F0FB] transition-colors font-fredoka font-normal outline-none flex-1 px-3 min-w-0 truncate ${!isValid ? "border-b border-red-500" : ""}`}
+          aria-label="Email input"
+          disabled={isSubmitting}
+          style={{ WebkitAppearance: "none", backgroundColor: "transparent" }}
+        />
         <button
           type="submit"
           aria-label="Submit email"
-          className="flex items-center justify-center cursor-pointer bg-[#0C0C36] hover:bg-[#0C0C36]/80 transition-colors px-5 py-2.5 rounded-[50px] whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed shrink-0"
+          className={`flex items-center justify-center cursor-pointer bg-[#0C0C36] hover:bg-[#0C0C36]/80 transition-colors px-5 py-2.5 rounded-[50px] whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed shrink-0`}
           disabled={isSubmitting}
         >
           {isSubmitting ? (
@@ -207,6 +201,11 @@ export const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ className }) =
             </>
           )}
         </button>
+        {!isValid && (
+          <p className="absolute -bottom-6 left-6 text-xs text-red-500">
+            Bitte gib eine gültige E-Mail-Adresse ein.
+          </p>
+        )}
       </form>
     </div>
   );
